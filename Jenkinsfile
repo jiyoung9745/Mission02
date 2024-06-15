@@ -1,41 +1,24 @@
 pipeline {
     agent any
     
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        
-        stage('Build') {
-            steps {
-                script {
-                    def classpath = "Mission01/classes;Mission01/lib/*;Mission01/lib/junit-platform-console-standalone-1.7.1.jar"
-                    bat "javac -encoding UTF-8 -d Mission01/classes Mission01/src/**/*.java"
-                }
+    stages() {
+        stage('git clone') {
+            steps() {
+                git 'https://github.com/jiyoung9745/Mission02.git'
             }
         }
         
         stage('Test') {
             steps {
-                script {
-                    def classpath = "Mission01/classes;Mission01/lib/*;Mission01/lib/junit-platform-console-standalone-1.7.1.jar"
-                    bat "java -cp ${classpath} org.junit.platform.console.ConsoleLauncher --scan-classpath > Mission01/test_results.txt"
-                }
+                echo 'Testing..'
             }
         }
-    }
-    
-    post {
-        always {
-            archiveArtifacts 'Mission01/test_results.txt'
-        }
-        failure {
-            echo 'Build or test failed'
-        }
-        success {
-            echo 'Build and test succeeded'
-        }
+        
+        stage('execute sh') {
+            steps {
+                sh "chmod 774 ./Mission.bat"
+                sh "./Mission.bat"
+            }
+        }        
     }
 }
