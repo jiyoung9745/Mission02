@@ -36,7 +36,21 @@ class BookManagerTest {
 
     @Test
     public void testRemoveBook() {
+    	System.out.println(bookManager.addBook(book2));
+    	System.out.println(bookManager.removeBook(2));
         System.out.println(bookManager.removeBook(1));
+    }
+    
+    @Test
+    public void testSearch_bs( ) {
+    	System.out.println(bookManager.addBook(book1));
+    	System.out.println(bookManager.addBook(book2));
+    	
+    	System.out.println(bookManager.search_bs(2));
+    	System.out.println(bookManager.search_bs(1));
+    	System.out.println(bookManager.search_bs(3));
+    	
+	
     }
 
 }
