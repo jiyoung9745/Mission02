@@ -1,9 +1,9 @@
 pipeline {
     agent any
     
-    stages() {
+    stages {
         stage('git clone') {
-            steps() {
+            steps {
                 git 'https://github.com/jiyoung9745/Mission02.git'
             }
         }
@@ -17,7 +17,7 @@ pipeline {
         stage('execute sh') {
             steps {
                 sh "chmod 774 ./Mission01.sh"
-                sh "./Mission.sh"
+                sh "./Mission01.sh" 
             }
         }        
     }
