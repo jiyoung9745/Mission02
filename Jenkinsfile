@@ -16,7 +16,7 @@ pipeline {
         
         stage('execute sh') {
             steps {
-                sh "chmod 774 ./Mission.bat"
+                sh "chmod 774 ./Mission01.bat"
                 sh "./Mission.bat"
             }
         }        
